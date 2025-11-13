@@ -85,8 +85,7 @@
         "type": "View",
         "viewType": "XML",
         "path": "sapips.training.odata.view",
-        "async": true,
-        "viewPath": "sapips.training.odata.view"
+        "async": true
       },
       "routes": [
         {
