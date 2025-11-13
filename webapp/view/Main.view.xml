@@ -1,6 +1,57 @@
-<mvc:View controllerName="sapips.training.odata.controller.Main"
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="sapips.training.odata.controller.Main">
     <Page id="page" title="{i18n>title}">
+    <content>
+        <Table noDataText="Drop column list items here and columns in the area above" 
+                       id="tblProduct"
+                       items="{
+                                path: '/Products',
+                                sorter: { path: 'ProductName', descending: false },                                
+                                filters: [
+                                        { path: 'Discontinued', operator: 'EQ', value1: false }
+                                         ]
+                              }"                        
+                       inset="false">
+            
+            <headerToolbar>
+                <Toolbar id="tb1">
+                <Title id="tbTitle1" text="Products" level="H2" />          
+                </Toolbar>
+            </headerToolbar>
+            
+            <infoToolbar>
+                <Toolbar id="tb2">
+                    <Text id="tbText1" text="Wide range of above Products" />
+                </Toolbar>
+            </infoToolbar>
+
+
+            <columns>
+                <Column id="column0">
+                    <header>
+                        <Label text="Product" id="label0"/>
+                    </header>
+                </Column>
+                <Column id="column1">
+                    <header>
+                        <Label text="Supplier ID" id="label1"/>
+                    </header>
+                </Column>
+                <Column id="column2">
+                    <header>
+                        <Label text="Unit Price" id="label2"/>
+                    </header>
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem type="Active" id="item0">
+                    <cells>
+                        <ObjectIdentifier id="oiProduct" title="{ProductName}" text="Product ID: {ProductID}" />
+                        <Text text="{SupplierID}" id="text3"/>
+                        <ObjectIdentifier id="oiPrice" title="{UnitPrice}" text="{QuantityPerUnit}" />
+                    </cells>
+                </ColumnListItem>
+            </items>            
+        </Table>
+    </content>
     </Page>
 </mvc:View>
